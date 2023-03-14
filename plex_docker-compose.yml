@@ -1,0 +1,32 @@
+version: '3'
+services:
+  tunnel:
+    container_name: cloudflared-tunnel
+    image: cloudflare/cloudflared
+    restart: unless-stopped
+    command: tunnel run
+    environment:
+      - TUNNEL_TOKEN=eyJhIjoiNzlhNTg5NTJjZDU5ZTFkMzk2YTJlZWViMDNlMDVhOGUiLCJ0IjoiNzE0NmU2MGMtNGRjNi00OWZkLTg5MDYtNDNkNjM2YzFkZjM1IiwicyI6IlpHTTVNR000TXpJdE56Rm1OQzAwWW1Rd0xUaGhNREV0Wld>
+  plex:
+    image: plexinc/pms-docker:latest
+    container_name: plex
+    network_mode: host
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - VERSION=docker
+      - PLEX_CLAIM= #optional
+    volumes:
+      - plex:/config
+      - /mnt/usb6tb:/data/usb6tb
+      - /mnt/usb11tb:/data/usb11tb
+      - tv:/media/tv
+      - movies:/media/movies
+      - music:/media/music
+#      - downloads-incomplete:/data/downloads-incomplete
+ #     - downloads-completed:/data/downloads-completed
+    restart: unless-stopped
+
+volumes:
+  plex:
+    driver: local
