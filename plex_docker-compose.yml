@@ -6,7 +6,7 @@ services:
     restart: unless-stopped
     command: tunnel run
     environment:
-      - TUNNEL_TOKEN=eyJhIjoiNzlhNTg5NTJjZDU5ZTFkMzk2YTJlZWViMDNlMDVhOGUiLCJ0IjoiNzE0NmU2MGMtNGRjNi00OWZkLTg5MDYtNDNkNjM2YzFkZjM1IiwicyI6IlpHTTVNR000TXpJdE56Rm1OQzAwWW1Rd0xUaGhNREV0Wld>
+      - TUNNEL_TOKEN=ezFkZjM1IiwicyI6IlpHTTVNR000TXpJdE56Rm1OQzAwWW1Rd0xUaGhNREV0Wld>
   plex:
     image: plexinc/pms-docker:latest
     container_name: plex
